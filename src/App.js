@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.scss";
+import ActorsGrid from "./components/ActorsGrid";
 import Header from "./components/Header";
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
       const res = await fetch("https://www.breakingbadapi.com/api/characters");
       const actors = await res.json();
       setActors(actors);
+      setFetchDone(true);
     } catch (error) {
       console.error(error);
     }
@@ -23,6 +25,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <ActorsGrid fetchDone={fetchDone} actors={actors} />
     </div>
   );
 };
