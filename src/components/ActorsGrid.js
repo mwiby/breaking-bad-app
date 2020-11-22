@@ -1,3 +1,5 @@
+import Actor from "./Actor";
+
 const ActorsGrid = ({ fetchDone, actors }) => {
   return !fetchDone ? (
     <div>
@@ -5,8 +7,8 @@ const ActorsGrid = ({ fetchDone, actors }) => {
     </div>
   ) : (
     <section className="cards">
-      {actors.map((actors) => (
-        <h1>{actors.name}</h1>
+      {actors.map((actor) => (
+        <Actor key={actor.char_id} actor={actor} />
       ))}
     </section>
   );
