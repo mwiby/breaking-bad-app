@@ -11,7 +11,7 @@ const Actor = ({ actor }) => {
           <ul>
             <li>
               <span>Role: </span>
-              {actor.occupation}
+              {actor.occupation[0]}
             </li>
             <li>
               <span>Status: </span>
