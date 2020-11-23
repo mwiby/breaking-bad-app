@@ -1,10 +1,9 @@
 import Actor from "./Actor";
+import Spinner from "./Spinner";
 
-const ActorsGrid = ({ fetchDone, actors }) => {
-  return !fetchDone ? (
-    <div>
-      <h1>Fetching data</h1>
-    </div>
+const ActorsGrid = ({ isLoading, actors }) => {
+  return isLoading ? (
+    <Spinner />
   ) : (
     <section className="cards">
       {actors.map((actor) => (

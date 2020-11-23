@@ -41,7 +41,19 @@ header img {
   justify-content: center;
   padding: 80px 0px;
 }
-
+.search-bar {
+  height: 150px;
+  padding-top: 20px;
+}
+input[type="text"] {
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 8px;
+  width: 50%;
+  margin: auto;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -2,17 +2,20 @@ import { useState, useEffect } from "react";
 import "./App.scss";
 import ActorsGrid from "./components/ActorsGrid";
 import Header from "./components/Header";
+import Search from "./components/Search";
 
 const App = () => {
   const [actors, setActors] = useState([]);
-  const [fetchDone, setFetchDone] = useState([false]);
-
+  const [isLoading, setIsLoading] = useState([true]);
+  const [query, setQuery] = useState("");
   const loadActors = async () => {
     try {
-      const res = await fetch("https://www.breakingbadapi.com/api/characters");
+      const res = await fetch(
+        `https://www.breakingbadapi.com/api/characters?name=${query}`
+      );
       const actors = await res.json();
       setActors(actors);
-      setFetchDone(true);
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
     }
@@ -20,12 +23,13 @@ const App = () => {
 
   useEffect(() => {
     loadActors();
-  }, []);
+  }, [query]);
 
   return (
     <div className="container">
       <Header />
-      <ActorsGrid fetchDone={fetchDone} actors={actors} />
+      <Search getQuery={(q) => setQuery(q)} />
+      <ActorsGrid isLoading={isLoading} actors={actors} />
     </div>
   );
 };

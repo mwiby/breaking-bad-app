@@ -1,5 +1,4 @@
 const Actor = ({ actor }) => {
-  console.log(actor);
   return (
     <div className="card">
       <div className="card-inner">
